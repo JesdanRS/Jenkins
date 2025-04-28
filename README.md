@@ -1,6 +1,6 @@
 # Proyecto Simple Java con Jenkins y Tomcat
 
-Este es un proyecto básico para aprender a utilizar Jenkins para integración continua y Tomcat como servidor de aplicaciones Java.
+Este es un proyecto básico para aprender a utilizar Jenkins para integración continua y Tomcat como servidor de aplicaciones Java. Este proyecto está diseñado para trabajo en equipo, permitiendo que varios desarrolladores colaboren utilizando Git y Jenkins para la integración continua.
 
 ## Estructura del Proyecto
 
@@ -52,10 +52,12 @@ Para utilizar este proyecto, necesitarás tener instalado:
 2. Instala los siguientes plugins en Jenkins:
    - Maven Integration
    - Pipeline
-   - Git Integration (si usas Git)
+   - Git Integration
+   - JUnit Plugin
+   - Timestamper
 3. Configura las herramientas en Jenkins:
-   - JDK
-   - Maven
+   - JDK (con el nombre "JDK" en la configuración global)
+   - Maven (con el nombre "Maven" en la configuración global)
 
 ## Construcción y Despliegue Manual
 
@@ -70,15 +72,80 @@ Para construir y desplegar manualmente el proyecto:
 ## Configuración del Pipeline de Jenkins
 
 1. Crea un nuevo proyecto de tipo Pipeline en Jenkins
-2. Configura la fuente del código (Git u otro sistema de control de versiones)
-3. Especifica que el script del Pipeline está en el SCM y proporciona la ruta al Jenkinsfile
-4. Guarda y ejecuta el pipeline
+2. Configura la fuente del código:
+   - Selecciona Git como sistema de control de versiones
+   - Ingresa la URL de tu repositorio Git compartido
+   - Configura las credenciales si es necesario
+3. En la sección "Pipeline", selecciona "Pipeline script from SCM"
+4. Especifica que el script del Pipeline está en el SCM y asegúrate que la ruta sea "Jenkinsfile"
+5. Configura el trigger para que se ejecute automáticamente cuando haya cambios en el repositorio:
+   - Marca la opción "Poll SCM" y configura un horario (por ejemplo, "H/5 * * * *" para verificar cada 5 minutos)
+6. Guarda la configuración y ejecuta el pipeline manualmente la primera vez
+
+## Trabajando en Equipo con Git y Jenkins
+
+### Configuración del Repositorio Git
+
+1. Crea un repositorio Git compartido (en GitHub, GitLab, Bitbucket, etc.)
+2. Sube el código inicial al repositorio:
+   ```bash
+   git init
+   git add .
+   git commit -m "Commit inicial"
+   git remote add origin [URL_DE_TU_REPOSITORIO]
+   git push -u origin master
+   ```
+3. Comparte la URL del repositorio con tu compañero de equipo
+
+### Flujo de Trabajo para el Equipo
+
+1. Cada miembro del equipo debe clonar el repositorio:
+   ```bash
+   git clone [URL_DEL_REPOSITORIO]
+   ```
+
+2. Para cada nueva característica o corrección, crear una rama:
+   ```bash
+   git checkout -b feature/nueva-caracteristica
+   ```
+
+3. Realizar cambios, probarlos localmente y hacer commits:
+   ```bash
+   git add .
+   git commit -m "Descripción detallada de los cambios"
+   ```
+
+4. Subir los cambios al repositorio remoto:
+   ```bash
+   git push origin feature/nueva-caracteristica
+   ```
+
+5. Crear un Pull Request/Merge Request para que el otro miembro del equipo revise los cambios
+
+6. Después de la revisión, fusionar los cambios con la rama principal
+
+7. Jenkins detectará automáticamente los cambios y ejecutará el pipeline
+
+### Verificación de la Integración Continua
+
+1. Después de cada push o merge a la rama principal, Jenkins:
+   - Detectará los cambios automáticamente
+   - Ejecutará el pipeline definido en el Jenkinsfile
+   - Compilará el código
+   - Ejecutará las pruebas
+   - Desplegará la aplicación en Tomcat si todo está correcto
+
+2. Ambos miembros del equipo pueden verificar el estado del pipeline en Jenkins
+
+3. Si el pipeline falla, el equipo debe revisar los logs en Jenkins para identificar y corregir el problema
 
 ## Notas Importantes
 
 - El Jenkinsfile incluido asume que tienes configuradas las herramientas 'Maven' y 'JDK' en Jenkins
 - Ajusta la ruta de despliegue de Tomcat en el Jenkinsfile según tu configuración
 - Para entornos de producción, considera utilizar credenciales seguras para el despliegue
+- Mantén comunicación constante con tu compañero de equipo sobre los cambios que estás realizando
+- Realiza pull regularmente para mantener tu copia local actualizada y evitar conflictos
 
 ## Recursos Adicionales
 

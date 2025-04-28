@@ -6,6 +6,13 @@ pipeline {
         jdk 'JDK'
     }
     
+    // Configuración para notificaciones y trabajo en equipo
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+        timeout(time: 60, unit: 'MINUTES')
+        timestamps()
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -15,18 +22,29 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                // Usar bat para Windows en lugar de sh
+                bat 'mvn clean compile'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'mvn test'
+                // Usar bat para Windows en lugar de sh
+                bat 'mvn test'
             }
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml'
+                    // Publicar resultados de cobertura si se implementa en el futuro
+                    // jacoco()
                 }
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                // Empaquetar la aplicación
+                bat 'mvn package -DskipTests'
             }
         }
         
@@ -39,6 +57,11 @@ pipeline {
                     
                     // Para Windows
                     bat "copy ${warFile} ${tomcatWeb}"
+                    
+                    // Esperar a que Tomcat despliegue la aplicación
+                    sleep(time: 10, unit: 'SECONDS')
+                    
+                    echo "Aplicación desplegada en: http://localhost:8080/simple-java-webapp"
                 }
             }
         }
@@ -47,9 +70,15 @@ pipeline {
     post {
         success {
             echo 'Despliegue exitoso!'
+            // Aquí se pueden agregar notificaciones por correo o Slack
         }
         failure {
             echo 'El build o despliegue falló!'
+            // Aquí se pueden agregar notificaciones por correo o Slack
+        }
+        always {
+            // Limpiar el workspace después de cada ejecución
+            cleanWs()
         }
     }
 }
