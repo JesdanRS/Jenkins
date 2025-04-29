@@ -46,11 +46,11 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    // Ruta de Tomcat webapps
-                    def tomcatWeb = 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps'
+                    // Ruta de Tomcat webapps con formato Windows (barras invertidas)
+                    def tomcatWeb = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps'
                     
-                    // Usar ruta relativa al workspace de Jenkins
-                    def warFile = "${WORKSPACE}/target/simple-java-webapp.war"
+                    // Usar ruta relativa al workspace de Jenkins con formato Windows (barras invertidas)
+                    def warFile = "${WORKSPACE}\\target\\simple-java-webapp.war"
                     
                     // Verificar si el directorio target existe
                     bat "dir ${WORKSPACE}\\target"
@@ -65,7 +65,7 @@ pipeline {
                     
                     sleep(time: 10, unit: 'SECONDS')
                     
-                    echo "Aplicación desplegada en: http://localhost:8081/simple-java-webapp/"
+                    echo "Aplicación desplegada en: http://localhost:8080/simple-java-webapp/"
                 }
             }
         }
