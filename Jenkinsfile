@@ -52,7 +52,7 @@ pipeline {
             steps {
                 script {
                     // Ajusta estas rutas según tu configuración de Tomcat
-                    def tomcatWeb = 'C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps'
+                    def tomcatWeb = 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps'
                     def warFile = 'target\simple-java-webapp.war'
                     
                     // Para Windows
