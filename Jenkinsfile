@@ -52,8 +52,8 @@ pipeline {
             steps {
                 script {
                     // Ajusta estas rutas según tu configuración de Tomcat
-                    def tomcatWeb = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps'
-                    def warFile = 'target\\simple-java-webapp.war'
+                    def tomcatWeb = 'C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps'
+                    def warFile = 'target\simple-java-webapp.war'
                     
                     // Para Windows
                     bat "copy ${warFile} ${tomcatWeb}"
@@ -61,7 +61,7 @@ pipeline {
                     // Esperar a que Tomcat despliegue la aplicación
                     sleep(time: 10, unit: 'SECONDS')
                     
-                    echo "Aplicación desplegada en: http://localhost:8080/simple-java-webapp"
+                    echo "Aplicación desplegada en: http://localhost:8081/simple-java-webapp/"
                 }
             }
         }
