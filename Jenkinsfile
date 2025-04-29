@@ -48,17 +48,15 @@ pipeline {
                 script {
                     // Rutas corregidas usando barras normales
                     def tomcatWeb = 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps'
-                    def warFile = 'target/simple-java-webapp.war'
                     
-                    // Verificar si el archivo WAR existe
-                    bat "dir target"
+                    // Usar directamente la ruta absoluta proporcionada por el usuario
+                    def warFileAbsolute = 'D:/Development/Jenkins/target/simple-java-webapp.war'
                     
-                    // Verificar si el archivo WAR específico existe
-                    bat "if exist ${warFile} (echo El archivo WAR existe) else (echo El archivo WAR NO existe)"
+                    // Verificar si el directorio target existe
+                    bat "dir D:\\Development\\Jenkins\\target"
                     
-                    // Usar ruta absoluta para el archivo WAR
-                    def workspace = env.WORKSPACE
-                    def warFileAbsolute = "${workspace}\\${warFile}"
+                    // Verificar si el archivo WAR específico existe en la ruta absoluta
+                    bat "if exist \"${warFileAbsolute}\" (echo El archivo WAR existe) else (echo El archivo WAR NO existe)"
                     
                     echo "Intentando copiar: ${warFileAbsolute}"
                     
