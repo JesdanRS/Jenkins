@@ -70,11 +70,10 @@ pipeline {
                     echo "Intentando copiar: ${warFile}"
                     
                     // Eliminar versión anterior del WAR en Tomcat si existe
-                    bat "if exist \"${tomcatWeb}\simple-java-webapp.war\" del \"${tomcatWeb}\simple-java-webapp.war\""
-                    bat "if exist \"${tomcatWeb}\simple-java-webapp\" rmdir /s /q \"${tomcatWeb}\simple-java-webapp\""
-                    
+                    bat "if exist \"${tomcatWeb}\\simple-java-webapp.war\" del \"${tomcatWeb}\\simple-java-webapp.war\""
+                    bat "if exist \"${tomcatWeb}\\simple-java-webapp\" rmdir /s /q \"${tomcatWeb}\\simple-java-webapp\""
                     // Copiar el archivo .war al directorio webapps usando la ruta del workspace
-                    bat "copy \"${warFile}\" \"${tomcatWeb}\""
+                    bat "copy \"${warFile}\" \"${tomcatWeb}\\\""5
                     
                     echo "Nuevo WAR desplegado correctamente"
                     sleep(time: 15, unit: 'SECONDS')
