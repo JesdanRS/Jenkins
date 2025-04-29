@@ -46,22 +46,22 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    // Rutas corregidas usando barras normales
+                    // Ruta de Tomcat webapps
                     def tomcatWeb = 'C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps'
                     
-                    // Usar directamente la ruta absoluta proporcionada por el usuario
-                    def warFileAbsolute = 'D:/Development/Jenkins/target/simple-java-webapp.war'
+                    // Usar ruta relativa al workspace de Jenkins
+                    def warFile = "${WORKSPACE}/target/simple-java-webapp.war"
                     
                     // Verificar si el directorio target existe
-                    bat "dir D:\\Development\\Jenkins\\target"
+                    bat "dir ${WORKSPACE}\\target"
                     
-                    // Verificar si el archivo WAR específico existe en la ruta absoluta
-                    bat "if exist \"${warFileAbsolute}\" (echo El archivo WAR existe) else (echo El archivo WAR NO existe)"
+                    // Verificar si el archivo WAR específico existe en la ruta del workspace
+                    bat "if exist \"${warFile}\" (echo El archivo WAR existe) else (echo El archivo WAR NO existe)"
                     
-                    echo "Intentando copiar: ${warFileAbsolute}"
+                    echo "Intentando copiar: ${warFile}"
                     
-                    // Copiar el archivo .war al directorio webapps usando ruta absoluta
-                    bat "copy \"${warFileAbsolute}\" \"${tomcatWeb}\""
+                    // Copiar el archivo .war al directorio webapps usando la ruta del workspace
+                    bat "copy \"${warFile}\" \"${tomcatWeb}\""
                     
                     sleep(time: 10, unit: 'SECONDS')
                     
