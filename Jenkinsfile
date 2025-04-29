@@ -73,7 +73,7 @@ pipeline {
                     bat "if exist \"${tomcatWeb}\\simple-java-webapp.war\" del \"${tomcatWeb}\\simple-java-webapp.war\""
                     bat "if exist \"${tomcatWeb}\\simple-java-webapp\" rmdir /s /q \"${tomcatWeb}\\simple-java-webapp\""
                     // Copiar el archivo .war al directorio webapps usando la ruta del workspace
-                    bat "copy \"${warFile}\" \"${tomcatWeb}\\\""5
+                    bat "copy \"${warFile}\" \"${tomcatWeb}\\\""
                     
                     echo "Nuevo WAR desplegado correctamente"
                     sleep(time: 15, unit: 'SECONDS')
