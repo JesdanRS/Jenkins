@@ -42,6 +42,10 @@
         <h1>Bienvenido a mi Aplicación Java</h1>
         <p>Esta es una aplicación simple para aprender Jenkins y Tomcat.</p>
         <p style="color: #00ff00; font-weight: bold; font-size: 18px;">¡Por fin da el deploy a Tomcat!</p>
+        <p style="color: #ffcc00; font-size: 14px;">Última actualización: <span id="timestamp"></span></p>
+        <script>
+            document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        </script>
         
         <div class="info">
             <h2>Información del Proyecto</h2>

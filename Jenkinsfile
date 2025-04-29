@@ -19,9 +19,17 @@ pipeline {
             }
         }
 
+        stage('Clean') {
+            steps {
+                bat 'mvn clean'
+                echo 'Limpieza completa del proyecto para asegurar una nueva construcción'
+            }
+        }
+
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                bat 'mvn compile'
+                echo 'Compilando el proyecto con los cambios más recientes'
             }
         }
 
@@ -40,6 +48,7 @@ pipeline {
         stage('Package') {
             steps {
                 bat 'mvn package -DskipTests'
+                echo 'Generando un nuevo archivo WAR con los cambios más recientes'
             }
         }
 
@@ -60,10 +69,15 @@ pipeline {
                     
                     echo "Intentando copiar: ${warFile}"
                     
+                    // Eliminar versión anterior del WAR en Tomcat si existe
+                    bat "if exist \"${tomcatWeb}\simple-java-webapp.war\" del \"${tomcatWeb}\simple-java-webapp.war\""
+                    bat "if exist \"${tomcatWeb}\simple-java-webapp\" rmdir /s /q \"${tomcatWeb}\simple-java-webapp\""
+                    
                     // Copiar el archivo .war al directorio webapps usando la ruta del workspace
                     bat "copy \"${warFile}\" \"${tomcatWeb}\""
                     
-                    sleep(time: 10, unit: 'SECONDS')
+                    echo "Nuevo WAR desplegado correctamente"
+                    sleep(time: 15, unit: 'SECONDS')
                     
                     echo "Aplicación desplegada en: http://localhost:8080/simple-java-webapp/"
                 }
