@@ -191,6 +191,54 @@
             transform: scaleX(1);
         }
         
+        /* Estilos para el contenedor de ingredientes */
+        .ingredients-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(111, 78, 55, 0.95);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+        
+        .coffee-item:hover .ingredients-container {
+            transform: translateY(0);
+        }
+        
+        .ingredients-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ingredients-title::before {
+            content: '🌱';
+            margin-right: 8px;
+        }
+        
+        .ingredients-list {
+            font-size: 0.9rem;
+            padding-left: 10px;
+        }
+        
+        .ingredients-list li {
+            padding: 3px 0;
+            padding-left: 15px;
+        }
+        
+        .ingredients-list li::before {
+            content: '•';
+            font-size: 1.2rem;
+            top: 0;
+        }
+        
         .coffee-item h3 {
             color: var(--primary-color);
             margin-bottom: 12px;
@@ -350,6 +398,15 @@
                             <h4>Método de preparación:</h4>
                             <p>Preparado con máquina de espresso a 9 bares de presión. El agua a 92°C pasa a través del café molido fino durante 25-30 segundos, extrayendo la esencia perfecta.</p>
                         </div>
+                        <div class="ingredients-container">
+                            <div class="ingredients-title">Ingredientes</div>
+                            <ul class="ingredients-list">
+                                <li>Granos de café Robusta (60%)</li>
+                                <li>Granos de café Arábica (40%)</li>
+                                <li>Tostado oscuro</li>
+                                <li>Molienda extrafina</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="coffee-item">
@@ -359,6 +416,15 @@
                         <div class="coffee-preparation">
                             <h4>Método de preparación:</h4>
                             <p>Utilizamos el método de filtrado por goteo con agua a 90°C. El proceso lento permite resaltar sus notas cítricas y su equilibrio característico.</p>
+                        </div>
+                        <div class="ingredients-container">
+                            <div class="ingredients-title">Ingredientes</div>
+                            <ul class="ingredients-list">
+                                <li>Granos de café Arábica (100%)</li>
+                                <li>Origen: Región de Huila</li>
+                                <li>Tostado medio</li>
+                                <li>Molienda media</li>
+                            </ul>
                         </div>
                     </div>
                     
@@ -370,6 +436,15 @@
                             <h4>Método de preparación:</h4>
                             <p>Preparado con método Chemex o V60 para resaltar sus notas florales. Infusión lenta con agua a 85°C en movimientos circulares para una extracción óptima.</p>
                         </div>
+                        <div class="ingredients-container">
+                            <div class="ingredients-title">Ingredientes</div>
+                            <ul class="ingredients-list">
+                                <li>Granos de café Arábica (100%)</li>
+                                <li>Origen: Región de Yirgacheffe</li>
+                                <li>Tostado ligero</li>
+                                <li>Proceso: Lavado natural</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="coffee-item">
@@ -379,6 +454,15 @@
                         <div class="coffee-preparation">
                             <h4>Método de preparación:</h4>
                             <p>Versátil para cualquier método: espresso, prensa francesa o filtro. Recomendamos la prensa francesa con 4 minutos de infusión para apreciar todos sus matices.</p>
+                        </div>
+                        <div class="ingredients-container">
+                            <div class="ingredients-title">Ingredientes</div>
+                            <ul class="ingredients-list">
+                                <li>Granos de café Arábica (70%)</li>
+                                <li>Granos de café Robusta (30%)</li>
+                                <li>Tostado medio-oscuro</li>
+                                <li>Mezcla de orígenes: Brasil, Colombia y Etiopía</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -398,6 +482,23 @@
     
     <script>
         document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Añadir animación suave para los ingredientes
+        document.querySelectorAll('.coffee-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const ingredientsContainer = this.querySelector('.ingredients-container');
+                if (ingredientsContainer) {
+                    ingredientsContainer.style.opacity = '1';
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const ingredientsContainer = this.querySelector('.ingredients-container');
+                if (ingredientsContainer) {
+                    ingredientsContainer.style.opacity = '0.95';
+                }
+            });
+        });
     </script>
 </body>
 </html>
