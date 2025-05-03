@@ -354,6 +354,100 @@
             transform-origin: bottom left;
         }
         
+        /* Estilos para la sección de ofertas diarias */
+        .daily-offers {
+            margin-top: 30px;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .offer-day {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px 15px;
+            box-shadow: 0 8px 16px rgba(111, 78, 55, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .offer-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .offer-day:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(111, 78, 55, 0.15);
+        }
+        
+        .day-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .day-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .offer-icon {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+        
+        .offer-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .offer-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+        
+        .offer-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            display: inline-block;
+            padding: 3px 12px;
+            background-color: rgba(212, 167, 106, 0.1);
+            border-radius: 20px;
+            margin-top: auto;
+        }
+        
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -364,6 +458,17 @@
             }
             
             .coffee-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .offers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .offers-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -464,6 +569,69 @@
                                 <li>Mezcla de orígenes: Brasil, Colombia y Etiopía</li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coffee-card daily-offers">
+                <h2>Ofertas de la Semana</h2>
+                <p>Cada día una promoción especial para los amantes del café:</p>
+                
+                <div class="offers-grid">
+                    <div class="offer-day">
+                        <div class="day-name">Lunes</div>
+                        <div class="offer-icon">☕</div>
+                        <div class="offer-title">Despertar Energético</div>
+                        <div class="offer-description">Comienza la semana con energía: 2x1 en todos nuestros espressos para llevarte al trabajo.</div>
+                        <div class="offer-price">2x1</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Martes</div>
+                        <div class="offer-icon">🍰</div>
+                        <div class="offer-title">Dulce Compañía</div>
+                        <div class="offer-description">Café con pastel de chocolate a precio especial. La combinación perfecta para endulzar tu día.</div>
+                        <div class="offer-price">€5.50</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Miércoles</div>
+                        <div class="offer-icon">🌱</div>
+                        <div class="offer-title">Día Orgánico</div>
+                        <div class="offer-description">20% de descuento en todos nuestros cafés de origen orgánico certificado.</div>
+                        <div class="offer-price">-20%</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Jueves</div>
+                        <div class="offer-icon">🧊</div>
+                        <div class="offer-title">Frescura Cafetera</div>
+                        <div class="offer-description">Bebidas frías de café a mitad de precio. Perfectas para refrescarte con sabor.</div>
+                        <div class="offer-price">-50%</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Viernes</div>
+                        <div class="offer-icon">🎁</div>
+                        <div class="offer-title">Fin de Semana Feliz</div>
+                        <div class="offer-description">Por la compra de 250g de café en grano, llévate una taza de cerámica de regalo.</div>
+                        <div class="offer-price">Regalo</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Sábado</div>
+                        <div class="offer-icon">👨‍👩‍👧‍👦</div>
+                        <div class="offer-title">Café en Familia</div>
+                        <div class="offer-description">Paquete familiar: 4 cafés y 4 pasteles a precio especial para disfrutar en compañía.</div>
+                        <div class="offer-price">€18.90</div>
+                    </div>
+                    
+                    <div class="offer-day">
+                        <div class="day-name">Domingo</div>
+                        <div class="offer-icon">🌍</div>
+                        <div class="offer-title">Viaje Mundial</div>
+                        <div class="offer-description">Degustación de 3 cafés de diferentes orígenes por el precio de uno. Explora el mundo en una taza.</div>
+                        <div class="offer-price">€4.95</div>
                     </div>
                 </div>
             </div>
