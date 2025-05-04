@@ -378,25 +378,6 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            cursor: pointer;
-        }
-        
-        .offer-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(111, 78, 55, 0.95);
-            color: white;
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            border-radius: 0 0 12px 12px;
-            z-index: 10;
-        }
-        
-        .offer-day.active .offer-details {
-            transform: translateY(0);
         }
         
         .offer-day::before {
@@ -601,91 +582,56 @@
                         <div class="day-name">Lunes</div>
                         <div class="offer-icon">☕</div>
                         <div class="offer-title">Despertar Energético</div>
+                        <div class="offer-description">Comienza la semana con energía: 2x1 en todos nuestros espressos para llevarte al trabajo.</div>
                         <div class="offer-price">2x1</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Comienza la semana con energía: 2x1 en todos nuestros espressos para llevarte al trabajo.</p>
-                            <p><strong>Horario:</strong> 7:00 AM - 11:00 AM</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Martes</div>
                         <div class="offer-icon">🍰</div>
                         <div class="offer-title">Dulce Compañía</div>
+                        <div class="offer-description">Café con pastel de chocolate a precio especial. La combinación perfecta para endulzar tu día.</div>
                         <div class="offer-price">€5.50</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Café con pastel de chocolate a precio especial. La combinación perfecta para endulzar tu día.</p>
-                            <p><strong>Horario:</strong> Todo el día</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Miércoles</div>
                         <div class="offer-icon">🌱</div>
                         <div class="offer-title">Día Orgánico</div>
+                        <div class="offer-description">20% de descuento en todos nuestros cafés de origen orgánico certificado.</div>
                         <div class="offer-price">-20%</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>20% de descuento en todos nuestros cafés de origen orgánico certificado.</p>
-                            <p><strong>Horario:</strong> Todo el día</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Jueves</div>
                         <div class="offer-icon">🧊</div>
                         <div class="offer-title">Frescura Cafetera</div>
+                        <div class="offer-description">Bebidas frías de café a mitad de precio. Perfectas para refrescarte con sabor.</div>
                         <div class="offer-price">-50%</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Bebidas frías de café a mitad de precio. Perfectas para refrescarte con sabor.</p>
-                            <p><strong>Horario:</strong> 12:00 PM - 6:00 PM</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Viernes</div>
                         <div class="offer-icon">🎁</div>
                         <div class="offer-title">Fin de Semana Feliz</div>
+                        <div class="offer-description">Por la compra de 250g de café en grano, llévate una taza de cerámica de regalo.</div>
                         <div class="offer-price">Regalo</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Por la compra de 250g de café en grano, llévate una taza de cerámica de regalo.</p>
-                            <p><strong>Horario:</strong> Todo el día</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Sábado</div>
                         <div class="offer-icon">👨‍👩‍👧‍👦</div>
                         <div class="offer-title">Café en Familia</div>
+                        <div class="offer-description">Paquete familiar: 4 cafés y 4 pasteles a precio especial para disfrutar en compañía.</div>
                         <div class="offer-price">€18.90</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Paquete familiar: 4 cafés y 4 pasteles a precio especial para disfrutar en compañía.</p>
-                            <p><strong>Horario:</strong> 10:00 AM - 8:00 PM</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                     
                     <div class="offer-day">
                         <div class="day-name">Domingo</div>
                         <div class="offer-icon">🌍</div>
                         <div class="offer-title">Viaje Mundial</div>
+                        <div class="offer-description">Degustación de 3 cafés de diferentes orígenes por el precio de uno. Explora el mundo en una taza.</div>
                         <div class="offer-price">€4.95</div>
-                        <div class="offer-details">
-                            <div class="ingredients-title">Detalles de la Promoción</div>
-                            <p>Degustación de 3 cafés de diferentes orígenes por el precio de uno. Explora el mundo en una taza.</p>
-                            <p><strong>Horario:</strong> 9:00 AM - 6:00 PM</p>
-                            <p><strong>Válido en:</strong> Todas nuestras sucursales</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -703,29 +649,22 @@
     </div>
     
     <script>
-        // Actualizar la fecha de última actualización
-        document.getElementById('timestamp').textContent = new Date().toLocaleDateString('es-ES', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
         
-        // Añadir interactividad a las ofertas diarias
-        document.addEventListener('DOMContentLoaded', function() {
-            const offerDays = document.querySelectorAll('.offer-day');
+        // Añadir animación suave para los ingredientes
+        document.querySelectorAll('.coffee-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const ingredientsContainer = this.querySelector('.ingredients-container');
+                if (ingredientsContainer) {
+                    ingredientsContainer.style.opacity = '1';
+                }
+            });
             
-            offerDays.forEach(day => {
-                day.addEventListener('click', function() {
-                    // Si ya está activo, desactivarlo
-                    if (this.classList.contains('active')) {
-                        this.classList.remove('active');
-                    } else {
-                        // Desactivar cualquier otro día activo
-                        offerDays.forEach(d => d.classList.remove('active'));
-                        // Activar este día
-                        this.classList.add('active');
-                    }
-                });
+            item.addEventListener('mouseleave', function() {
+                const ingredientsContainer = this.querySelector('.ingredients-container');
+                if (ingredientsContainer) {
+                    ingredientsContainer.style.opacity = '0.95';
+                }
             });
         });
     </script>
