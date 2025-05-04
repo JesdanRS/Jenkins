@@ -50,13 +50,28 @@
             transform: translateY(-5px);
         }
         
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatText {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
         .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(-45deg, var(--primary-color), #3b290c, #d1b37c, var(--secondary-color));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             padding: 40px;
             color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .header::before {
@@ -70,6 +85,31 @@
             opacity: 0.5;
             transform: rotate(30deg);
             pointer-events: none;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            animation: moveLines 20s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes moveLines {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
         }
         
         .header h1 {
@@ -77,7 +117,15 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 2.8rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+                         0 0 20px rgba(255,255,255,0.1),
+                         0 0 40px rgba(255,255,255,0.1);
+            animation: floatText 3s ease-in-out infinite;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #FFFFFF, #E0E0E0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .header p {
@@ -85,6 +133,10 @@
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            opacity: 0.9;
+            animation: floatText 3s ease-in-out infinite;
+            animation-delay: 0.2s;
         }
         
         .content {
