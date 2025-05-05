@@ -256,6 +256,99 @@ ingredients-list li {
     margin-right: 8px;
     font-size: 0.9rem;
 }
+.coffee-origins {
+    margin-bottom: 40px;
+}
+
+.origin-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.origin-item {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.origin-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.origin-item:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.origin-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.origin-icon {
+    font-size: 2.5rem;
+    grid-row: span 2;
+    padding: 10px;
+    background: rgba(212, 167, 106, 0.1);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.origin-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.cultivation-details {
+    background: rgba(212, 167, 106, 0.05);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.cultivation-details h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.cultivation-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cultivation-details li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.cultivation-details li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
 .hours-section {
     margin-top: 30px;
 }
