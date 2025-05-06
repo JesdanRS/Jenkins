@@ -18,7 +18,7 @@ public class SimpleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-            out.pntln("<!DOCTYPE html>");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Aplicación Simple para Jenkins y Tomcat</title>");
